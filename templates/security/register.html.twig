@@ -1,0 +1,61 @@
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="css/page1.css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"/>
+{% endblock %}
+
+        {% block javascripts %}
+        {% endblock %}
+
+{% block body %}
+    {% for message in app.flashes('password') %}
+        <p style="color: red">
+            {{ message }}
+        </p>
+    {% endfor %}
+    <div class="container" id="container">
+
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-right">
+                    <h1>  .. مرحبا بيك مرة أخرى</h1>
+                    <p>Aidez n'importe quel animal avec n'importe quoi</p>
+                    <a class="ghost" href="{{ path('app_login')}}">S'identifier</a>
+
+                </div>
+
+            </div>
+        </div>
+        <div class="form-container sign-in-container">
+            {{ form_start(Register) }}
+            <h1>Cree Un Compte</h1>
+
+            {{form_widget(Register.nom)}}
+
+            {{ form_widget(Register.prenom)}}
+            {{ form_widget(Register.email)}}
+            {{ form_widget(Register.password)}}
+            {{ form_widget(Register.CofirmePassword)}}
+
+
+            <button>Inscription</button>
+            {{ form_end(Register) }}
+        </div>
+
+
+
+    </div>
+    <script>
+        const signUpButton = document.getElementById('signUp');
+        const signInButton = document.getElementById('signIn');
+        const container = document.getElementById('container');
+
+        signUpButton.addEventListener('click', () => {
+            container.classList.add("right-panel-active");
+        });
+
+        signInButton.addEventListener('click', () => {
+            container.classList.remove("right-panel-active");
+        });
+    </script>
+
+{% endblock %}

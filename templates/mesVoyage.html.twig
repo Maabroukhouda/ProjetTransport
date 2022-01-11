@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+  {% block body %}<div class="jumbotron">
+      <div class="container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 mt-5">
+          {% for v in voyages %}
+              <div class="col ">
+                  <figure><a href="{{path('Details', {id:v.id} ) }}"><img src="{{ asset('uploads/' ~ v.image ) }}" class="card-img-top" >
+                      </a>
+                      <figcaption>
+                          <h6 class="heading">de {{ v.depart }} à {{ v.destination}} </h6>
+                          <p> le {{ v.date| date('m/d/y') }}</p>
+                      </figcaption>
+                  </figure>
+                  <a href="{{path('modifier', {id:v.id} ) }}" class="btn btn-outline-warning btn-sm">Modifier</a>
+                  <a href="{{path('Details', {id:v.id} ) }}" class="btn btn-outline-warning btn-sm">Detalis</a>
+                  <a href="{{path('supprimer', {id:v.id} ) }}" class="btn btn-warning btn-sm">Supprimer</a>
+
+              </div>
+          {% endfor %}
+
+      </div>
+      </div></div>
+
+
+
+  {% endblock %}

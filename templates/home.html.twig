@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+  {% block body %}
+<div class="jumbotron">
+    <div class="container">
+        {{ form_start(form) }}
+
+        <div class="row mt-3">
+
+            <div class="col">     {{ form_widget(form.depart) }}</div>
+            <div class="col">  {{ form_widget(form.destination) }}</div>
+            <div class="col">  {{ form_row(form.minPrix) }}</div>
+            <div class="col">  {{ form_row(form.maxPrix) }}</div>
+            <div class="col">  {{ form_row(form.minNbplace) }}</div>
+              <div class="col">
+                  <button class="btn btn-warning">
+                      Rechercher</button>
+              </div>
+
+        </div>
+        {{ form_end(form) }}
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 mt-5">
+            {% for v in voyages %}
+            <div class="col ">
+                <figure><a href="{{path('Details', {id:v.id} ) }}"><img src="{{ asset('uploads/' ~ v.image ) }}" class="card-img-top" >
+                        </a>
+                    <figcaption>
+                        <h6 class="heading">de {{ v.depart }} à {{ v.destination}} </h6>
+                        <p> le {{ v.date| date('m/d/y') }}</p>
+                    </figcaption>
+                </figure>
+                <a href="{{path('Details', {id:v.id} ) }}" class="btn btn-outline-warning btn-sm">Detalis</a>
+            </div>
+                       {% endfor %}
+
+        </div>
+
+
+
+
+</div>
+  {% endblock %}
+

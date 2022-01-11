@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+        {% block body %}
+            <div class="form">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-10">
+                            <div class="text-container">
+                                <h2 class="mt-5">Modifier le voyage</h2>
+                                {{ form_start(form) }}
+
+                                <div class="row g-3 ">
+                                    <div class="col">
+                                        <div class="row">
+                                            <div class="col-md-2"><p>Depart</p></div>
+                                            <div class="col"> {{ form_widget(form.depart) }}</div>
+                                        </div>
+
+                                    </div>
+                                    <div class="col ">
+                                        <div class="row">
+                                            <div class="col-md-3"><p>Destination</p></div>
+                                            <div class="col"> {{ form_widget(form.destination) }}     </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row g-3 mt-2">
+                                    <div class="col">
+                                        {{ form_widget(form.moyentransport) }}
+                                    </div>
+                                    <div class="col">
+                                        <div class="row ">
+                                            <div class="col-md-8 ">{{ form_widget(form.image) }} </div>
+                                            <div class="col">      <a class="text-muted" href="{{ asset('uploads/' ~ voyage.image) }}">Voir l'image</a>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row g-3 mt-2">
+                                    <div class="col">
+                                        {{ form_widget(form.date) }}
+                                    </div>
+                                    <div class="col">
+                                        {{ form_widget(form.nbplace) }}
+                                    </div>
+                                </div>
+                                <div class="row g-3 mt-2">
+                                    <div class="col">
+                                        {{ form_widget(form.prix) }}
+                                    </div>
+                                    <div class="col mt-3 g-3">
+                                        <input class="btn btn-warning" type="submit" value="Modifier">
+                                    </div>
+                                </div>
+
+
+
+            {{ form_end(form) }}
+
+
+
+                                {% endblock %}
